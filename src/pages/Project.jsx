@@ -1,172 +1,97 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+/**
+ * Final projects page.
+ * Web = SpecTag cards · UX = Plate cards (uniform grid per section).
+ */
 
-const projects = [
-  {
-    id: "nourishly",
-    index: "01",
-    title: "Nourishly",
-    type: "Meal Planning Application",
-    status: "Capstone",
-    description:
-      "A responsive meal planning application with recipe discovery, weekly planning, grocery list flow, and dashboard-style user experience.",
-    role: "Frontend Lead / UX Architect",
-    stack: ["React", "Vite", "Tailwind", "AWS Amplify"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    id: "reelphrases",
-    index: "02",
-    title: "ReelPhrases",
-    type: "Movie Quote Search Engine",
-    status: "Featured",
-    description:
-      "A cinematic quote search tool built around movie dialogue discovery, search relevance, and clean interface design.",
-    role: "Frontend / Full-Stack Developer",
-    stack: ["React", "FastAPI", "SQLite FTS5", "Python"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    id: "filmroll-pro",
-    index: "03",
-    title: "MLP FilmRoll Pro",
-    type: "E-commerce Interface",
-    status: "Archived",
-    description:
-      "An e-commerce style web experience for film photography products with product cards, cart flow, filters, and promotional pricing.",
-    role: "Frontend Developer",
-    stack: ["JavaScript", "HTML", "CSS"],
-    github: "#",
-    demo: "#",
-  },
-];
+import { motion } from "framer-motion";
+import ProjectWorkSection from "../components/projects/ProjectWorkSection";
+import { PROJECT_SECTIONS, projectsBySection } from "../data/projects";
+
+const CornerBrackets = () => (
+  <>
+    <div className="absolute left-0 top-0 h-4 w-4 border-l border-t border-white/20" />
+    <div className="absolute right-0 top-0 h-4 w-4 border-r border-t border-white/20" />
+    <div className="absolute bottom-0 left-0 h-4 w-4 border-l border-b border-white/20" />
+    <div className="absolute bottom-0 right-0 h-4 w-4 border-r border-b border-white/20" />
+  </>
+);
 
 export default function Project() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#0D0F14] px-6 pb-24 pt-32 text-white md:px-8">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#0A0C10] px-4 pb-28 pt-28 text-white selection:bg-[#92DCE2] selection:text-black sm:px-6 sm:pt-32 lg:px-8">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-10%] top-[-10%] h-[30rem] w-[30rem] bg-[#20808D]/10 blur-[120px]" />
-        <div className="absolute bottom-[-12%] right-[-10%] h-[34rem] w-[34rem] bg-[#8B5CF6]/10 blur-[120px]" />
+        <div className="absolute left-[-5%] top-[-5%] h-[40rem] w-[40rem] bg-[#20808D]/10 opacity-50 blur-[140px]" />
+        <div className="absolute bottom-[-10%] right-[-5%] h-[40rem] w-[40rem] bg-[#8B5CF6]/10 opacity-40 blur-[140px]" />
       </div>
 
       <section className="relative z-10 mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          className="mb-12 border-b border-white/10 pb-8"
-        >
-          <p className="font-mono text-[10px] uppercase tracking-[0.45em] text-[#92DCE2]">
-            Project Archive
-          </p>
+        {/* Page header  */}
+        <div className="relative mb-12 border-l border-white/10 pl-4 sm:mb-16 sm:pl-8">
+          <CornerBrackets />
 
-          <div className="mt-5 grid gap-8 lg:grid-cols-[1fr_420px] lg:items-end">
-            <h1 className="max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.07em] md:text-7xl lg:text-8xl">
-              Selected
-              <span className="block text-white/35">Systems</span>
-            </h1>
-
-            <p className="max-w-md text-sm leading-7 text-white/50">
-              A collection of software projects focused on frontend systems,
-              full-stack development, user-centered design, and polished product
-              presentation.
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="border-b border-white/10 pb-8"
+          >
+            <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-[#92DCE2] sm:text-[10px] sm:tracking-[0.5em]">
+              FEATURED WORK
             </p>
-          </div>
-        </motion.div>
+            <div className="mt-4 grid gap-6 sm:mt-6 sm:gap-8 lg:grid-cols-[1fr_420px] lg:items-end">
+              <h1 className="max-w-4xl font-black uppercase leading-[0.9] tracking-[-0.07em]">
+                <span className="block text-4xl sm:text-5xl md:text-7xl lg:text-8xl">Selected</span>
+                <span className="mt-1 block text-4xl text-white/35 sm:text-5xl md:text-7xl lg:text-8xl">
+                  Projects
+                </span>
+              </h1>
+              <p className="max-w-md text-sm leading-relaxed text-muted-soft">
+                A focused archive of product work — from interface systems to
+                full-stack builds, including work in progress.
+              </p>
+            </div>
+          </motion.div>
+        </div>
 
-        <div className="grid gap-5">
-          {projects.map((project, index) => (
-            <ProjectArchiveCard
-              key={project.id}
-              project={project}
-              delay={index * 0.08}
+        {/* ── Section index strip ─ */}
+        <nav
+          aria-label="Project sections"
+          className="mb-14 flex flex-wrap gap-3 border-y border-white/[0.06] py-4"
+        >
+          {PROJECT_SECTIONS.map((section) => (
+            <a
+              key={section.id}
+              href={`#section-${section.id}`}
+              className="group flex items-center gap-3 border border-white/10 bg-white/[0.02] px-4 py-2.5 transition hover:border-white/20"
+            >
+              <span
+                className="font-mono text-[10px] text-white/30 transition group-hover:text-white/50"
+              >
+                {section.index}
+              </span>
+              <span className="text-xs font-medium uppercase tracking-wide text-white/55 group-hover:text-white/80">
+                {section.title}
+              </span>
+              <span
+                className="h-px w-6 opacity-50"
+                style={{ backgroundColor: section.accent }}
+              />
+            </a>
+          ))}
+        </nav>
+
+        {/* ── Work sections ── */}
+        <div className="space-y-20 md:space-y-28">
+          {PROJECT_SECTIONS.map((section, i) => (
+            <ProjectWorkSection
+              key={section.id}
+              section={section}
+              items={projectsBySection(section.id)}
+              delay={i * 0.08}
             />
           ))}
         </div>
-        
       </section>
     </main>
-  );
-}
-
-function ProjectArchiveCard({ project, delay }) {
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 26 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay, ease: "easeOut" }}
-      className="group relative overflow-hidden border border-white/10 bg-[#151921]/85 transition hover:border-[#92DCE2]/35 hover:bg-[#171C23]"
-    >
-      <div className="grid gap-0 lg:grid-cols-[140px_1.2fr_0.9fr]">
-        <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.025] p-5 lg:block lg:border-b-0 lg:border-r">
-          <p className="text-6xl font-black tracking-[-0.09em] text-white/20">
-            {project.index}
-          </p>
-
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#92DCE2] lg:mt-8">
-            {project.status}
-          </p>
-        </div>
-
-        <div className="p-6 md:p-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-white/35">
-            {project.type}
-          </p>
-
-          <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.05em] text-white md:text-5xl">
-            {project.title}
-          </h2>
-
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/55">
-            {project.description}
-          </p>
-
-          <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A78BFA]">
-            Role / {project.role}
-          </p>
-        </div>
-
-        <div className="border-t border-white/10 p-6 md:p-8 lg:border-l lg:border-t-0">
-          <div className="mb-6 flex flex-wrap gap-2">
-            {project.stack.map((item) => (
-              <span
-                key={item}
-                className="border border-white/10 bg-white/[0.035] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/50"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-auto flex flex-wrap gap-3">
-            <Link
-              to={`/projects/${project.id}`}
-              className="border border-[#92DCE2]/30 bg-[#92DCE2]/10 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[#92DCE2] transition hover:bg-[#92DCE2]/15"
-            >
-              Case Study
-            </Link>
-
-            <a
-              href={project.github}
-              className="border border-white/10 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 transition hover:border-white/25 hover:text-white"
-            >
-              GitHub
-            </a>
-
-            <a
-              href={project.demo}
-              className="border border-white/10 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 transition hover:border-white/25 hover:text-white"
-            >
-              Demo
-            </a>
-
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#92DCE2] transition-all duration-500 group-hover:w-full" />
-    </motion.article>
   );
 }

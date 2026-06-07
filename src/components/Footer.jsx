@@ -1,4 +1,5 @@
 // ver 3 (LOCKED - FINAL)
+// note: 
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -55,19 +56,17 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/45">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-soft">
               A digital archive of architectural progress, technical solutions,
               development process, and software growth.
             </p>
 
-            <div className="mt-6 flex items-center gap-2.5">
+            {/* <div className="mt-6 flex items-center gap-2.5">
               <span className="h-2 w-2 rounded-full bg-[#92DCE2]" />
-              
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
                 Portfolio System / Active
               </span>
-
-            </div>
+            </div> */}
           </div>
 
 

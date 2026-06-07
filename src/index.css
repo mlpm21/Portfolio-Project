@@ -9,4 +9,17 @@ body {
   background: #0a0a0a;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+@utility text-muted {
+  color: rgb(255 255 255 / 0.44);
+}
+
+@utility text-muted-soft {
+  color: rgb(255 255 255 / 0.38);
+}
+
+@utility text-muted-strong {
+  color: rgb(255 255 255 / 0.52);
 }

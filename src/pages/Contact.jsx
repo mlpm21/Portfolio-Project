@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Routes from "../components/Routes";
+import ContactRoutes from "../components/ContactRoutes";
 
 // Industrial Design Elements
 const CornerFrame = () => (
@@ -27,7 +27,7 @@ const MetaData = ({ label, value }) => (
 export default function Contact() {
   return (
 
-    <main className="relative min-h-screen overflow-hidden bg-[#0D0F14] px-6 pb-24 pt-32 text-white antialiased md:px-8">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#0D0F14] px-4 pb-24 pt-28 text-white antialiased sm:px-6 md:px-8 md:pt-32">
       
       {/* Background: ambient glows + grid */}
       <div className="pointer-events-none absolute inset-0">
@@ -42,24 +42,21 @@ export default function Contact() {
         className="relative z-10 mx-auto max-w-7xl"
       >
         {/* Top Technical Header */}
-        <div className="mb-10 flex items-center justify-between border-b border-white/10 pb-6">
-          
-          <div className="flex items-center gap-4">
-            <div className="bg-white px-2 py-1 font-mono text-[10px] font-bold text-black">
+        <div className="mb-8 flex flex-col gap-3 border-b border-white/10 pb-6 sm:mb-10 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-w-0 flex-wrap items-center gap-3 sm:gap-4">
+            <div className="shrink-0 bg-white px-2 py-1 font-mono text-[10px] font-bold text-black">
               ID_SYS_2026
             </div>
-
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/20">
+            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/20 sm:text-[10px] sm:tracking-[0.35em]">
               Directory / Personnel_Access
             </span>
-
           </div>
         </div>
 
 
         <div className="grid gap-1 lg:grid-cols-12">
           {/* LEFT: THE DOSSIER CARD */}
-          <div className="relative overflow-hidden border border-white/10 bg-[#121418] p-8 lg:col-span-8">
+          <div className="relative overflow-hidden border border-white/10 bg-[#121418] p-5 sm:p-8 lg:col-span-8">
             <CornerFrame />
             
             <div className="flex flex-col gap-8 md:flex-row">
@@ -75,7 +72,7 @@ export default function Contact() {
                   <div className="mt-4 h-[1px] w-12 bg-white/20" />
                 </div>
 
-                <div className="absolute bottom-2 right-2 font-mono text-[8px] text-white/20 uppercase">
+                <div className="absolute bottom-2 right-2 font-mono text-[10px] text-white/20 uppercase">
                   Level: 04
                 </div>
 
@@ -84,21 +81,52 @@ export default function Contact() {
 
               {/* Identity Details */}
               <div className="flex-1">
-                <div className="mb-6 flex items-center gap-2">
+                <div className="mb-3 flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-[#92DCE2]" />
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#92DCE2]">Identity Verified</span>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-[#92DCE2]">Identity Verified</span>
                 </div>
                 
-                <h1 className="text-7xl font-black uppercase tracking-[-0.06em] leading-[0.8] md:text-9xl">
+                <h1 className="text-4xl font-black uppercase leading-[0.88] tracking-[-0.06em] sm:text-5xl md:text-7xl lg:text-8xl">
                   Mint <br />
                   <span className="text-white/10">L.</span>
                 </h1>
 
-                <div className="mt-8 grid grid-cols-2 gap-6 border-t border-white/5 pt-8 md:grid-cols-4">
+                <div className="mt-6 grid grid-cols-2 gap-4 sm:mt-8 sm:gap-6 md:grid-cols-4">
                   <MetaData label="Role" value="Software Eng" />
                   <MetaData label="Special" value="UX Architecture" />
                   <MetaData label="System" value="Full-Stack" />
                   <MetaData label="Origin" value="Oregon / US" />
+                </div>
+
+                {/* Core Stack Tags */}
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {[
+                    { tag: "React",          color: "teal"  },
+                    { tag: "JavaScript",     color: "teal"  },
+                    { tag: "Tailwind",       color: "teal"  },
+                    { tag: "Framer Motion",  color: "teal"  },
+                    { tag: "Node.js",        color: "purple"},
+                    { tag: "Express",        color: "purple"},
+                    { tag: "MySQL",          color: "purple"},
+                    { tag: "REST API",       color: "purple"},
+                    { tag: "UI/UX",          color: "slate" },
+                    { tag: "Wireframing",    color: "slate" },
+                    { tag: "UX Research",    color: "slate" },
+                    { tag: "Design System",  color: "slate" },
+                  ].map(({ tag, color }) => (
+                    <span
+                      key={tag}
+                      className={`px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] ${
+                        color === "teal"
+                          ? "border border-[#92DCE2]/20 bg-[#92DCE2]/5 text-[#92DCE2]/50 shadow-[0_0_10px_rgba(146,220,226,0.08)]"
+                          : color === "purple"
+                          ? "border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 text-[#8B5CF6]/50 shadow-[0_0_10px_rgba(139,92,246,0.08)]"
+                          : "border border-[#94A3B8]/20 bg-[#94A3B8]/5 text-[#94A3B8]/50 shadow-[0_0_10px_rgba(148,163,184,0.08)]"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
               </div>
@@ -106,46 +134,42 @@ export default function Contact() {
 
 
             {/* Barcode Section */}
-            <div className="mt-12 flex items-end justify-between">
-              <p className="font-mono text-[8px] tracking-[0.5em] text-white/20">5002-0709-ML-21</p>
-              
-              <div className="text-right font-mono text-[9px] uppercase tracking-widest text-white/20">
-                Authorized Personnel Only <br /> © 2026
-              
+            <div className="mt-5 flex items-end justify-between border-t border-white/5 pt-6"></div>
+            <div className="mt-2.5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <p className="font-mono text-[8px] tracking-[0.35em] text-white/20 sm:tracking-[0.5em]">
+                5002-0709-ML-21
+              </p>
+              <div className="font-mono text-[8px] uppercase tracking-widest text-white/20 sm:text-[9px] sm:text-right">
+                Authorized Personnel Only © 2026
               </div>
+            </div>
+
+            {/* Stats Bar */}
+            <div className="mt-1 grid grid-cols-1 gap-1.5 sm:grid-cols-3">
+              {[
+                { key: "Projects", val: "04" },
+                { key: "Skill", val: "50+" },
+                { key: "Status", val: "Available" },
+              ].map(({ key, val }, i) => (
+                <div key={i} className="flex items-center justify-between border border-white/10 bg-[#0D0F12] p-3 sm:p-4">
+                  <div className="hidden h-6 w-px bg-white/10 sm:block" />
+                  <div className="min-w-0 flex-1 text-center font-mono text-[10px] font-bold uppercase tracking-wider text-white/40 sm:text-[11px] sm:tracking-widest">
+                    {key}:{" "}
+                    <span className={val === "Available" ? "text-[#92DCE2]" : "text-muted-strong"}>
+                      {val}
+                    </span>
+                  </div>
+                  <div className="h-2 w-2 bg-white/10" />
+                </div>
+              ))}
             </div>
           </div>
 
 
           {/* RIGHT: THE "CONTACT ROUTE" PANEL */}
-          <Routes className="lg:col-span-4" />
+          <ContactRoutes className="lg:col-span-4" />
         </div>
 
-
-        {/* Footer Stats Bar Panel */}
-        <div className="mt-1 grid grid-cols-2 gap-1 md:grid-cols-4">
-          {[
-            { key: "Projects", val: "00" },
-            { key: "Skill", val: "50+" },
-            { key: "Location", val: "OR/US" },
-            { key: "Status", val: "Available" },
-          ].map(({ key, val }, i) => (
-            <div key={i} className="border border-white/10 bg-[#121418] p-4 flex items-center justify-between">
-              <div className="h-8 w-[1px] bg-white/10" />
-              
-              <div className="font-mono text-[11px] font-bold uppercase tracking-widest text-white/40">
-                {key}:{" "}
-
-                <span className={val === "Available" ? "text-[#92DCE2]" : "text-white/70"}>
-                  {val}
-                </span>
-
-              </div>
-              <div className="h-2 w-2 bg-white/10" />
-            </div>
-
-          ))}
-        </div>
 
       </motion.section>
     </main>
