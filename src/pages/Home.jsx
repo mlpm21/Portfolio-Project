@@ -43,9 +43,9 @@ const CornerBrackets = () => (
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#0A0C10] text-white selection:bg-[#92DCE2] selection:text-black">
+    <main className="relative min-h-screen bg-[#0A0C10] text-white selection:bg-[#92DCE2] selection:text-black">
       {/* Background Layer: Grid & Ambient Glow */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[-5%] top-[-5%] h-[40rem] w-[40rem] bg-[#20808D]/10 blur-[140px] opacity-50" />
         <div className="absolute bottom-[-10%] right-[-5%] h-[40rem] w-[40rem] bg-[#8B5CF6]/10 blur-[140px] opacity-40" />
       </div>

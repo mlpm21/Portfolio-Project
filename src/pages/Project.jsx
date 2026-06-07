@@ -18,8 +18,8 @@ const CornerBrackets = () => (
 
 export default function Project() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#0A0C10] px-4 pb-28 pt-28 text-white selection:bg-[#92DCE2] selection:text-black sm:px-6 sm:pt-32 lg:px-8">
-      <div className="pointer-events-none absolute inset-0">
+    <main className="relative min-h-screen bg-[#0A0C10] px-4 pb-28 pt-28 text-white selection:bg-[#92DCE2] selection:text-black sm:px-6 sm:pt-32 lg:px-8">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[-5%] top-[-5%] h-[40rem] w-[40rem] bg-[#20808D]/10 opacity-50 blur-[140px]" />
         <div className="absolute bottom-[-10%] right-[-5%] h-[40rem] w-[40rem] bg-[#8B5CF6]/10 opacity-40 blur-[140px]" />
       </div>

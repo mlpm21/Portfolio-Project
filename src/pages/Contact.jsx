@@ -27,10 +27,10 @@ const MetaData = ({ label, value }) => (
 export default function Contact() {
   return (
 
-    <main className="relative min-h-screen overflow-x-hidden bg-[#0D0F14] px-4 pb-24 pt-28 text-white antialiased sm:px-6 md:px-8 md:pt-32">
+    <main className="relative min-h-screen bg-[#0D0F14] px-4 pb-24 pt-28 text-white antialiased sm:px-6 md:px-8 md:pt-32">
       
       {/* Background: ambient glows + grid */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[-10%] top-[-10%] h-[34rem] w-[34rem] bg-[#20808D]/10 blur-[120px]" />
         <div className="absolute bottom-[-12%] right-[-10%] h-[34rem] w-[34rem] bg-[#8B5CF6]/10 blur-[120px]" />
       </div>

@@ -75,8 +75,8 @@ export default function ProjectDetail() {
   const paragraphs = description.split("\n\n").filter(Boolean);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#0D0F14] px-4 pb-24 pt-28 text-white sm:px-6 md:px-8 md:pt-32">
-      <div className="pointer-events-none absolute inset-0">
+    <main className="relative min-h-screen bg-[#0D0F14] px-4 pb-24 pt-28 text-white sm:px-6 md:px-8 md:pt-32">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="absolute left-[-10%] top-[-10%] h-[34rem] w-[34rem] blur-[120px]"
           style={{ backgroundColor: accentAlpha(theme, 0.12) }}

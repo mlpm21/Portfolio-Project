@@ -16,7 +16,7 @@ import Contact from "./pages/Contact";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen overflow-x-hidden bg-[#0D0F14]">
+      <div className="min-h-screen bg-[#0D0F14]">
         <Navbar />
 
         <Routes>
